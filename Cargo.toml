@@ -2,6 +2,7 @@
 resolver = "2"
 members = [
     "cuest-ffi",
+    "cuest-cudarc",
 ]
 
 [workspace.package]

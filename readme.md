@@ -11,7 +11,7 @@ This project is not an official NVIDIA project.
 ```text
 cuest-rs/
 ├── cuest-ffi/          # Raw FFI bindings (auto-generated, unsafe)
-└── cuest-cudarc/       # Safe wrapper over cuest-ffi + cudarc (planned)
+└── cuest-cudarc/       # Safe wrapper over cuest-ffi + cudarc
 ```
 
 ## Crate `cuest-ffi`
@@ -19,6 +19,14 @@ cuest-rs/
 Raw, unsafe FFI bindings 1:1 with the cuEST C API, generated from the cuEST
 public C headers by `cuest-ffi/scripts/generate_ffi.py`. Supports dynamic
 library loading (default) and static linking. See `cuest-ffi/readme.md`.
+
+## Crate `cuest-cudarc`
+
+Safe wrapper around the raw bindings built on [cudarc], covering context
+creation, AO basis construction (shells, basis, pair lists) and one-electron
+integrals (overlap, kinetic, potential). See `cuest-cudarc/readme.md`.
+
+[cudarc]: https://docs.rs/cudarc
 
 ## License
 
