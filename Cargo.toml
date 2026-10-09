@@ -1,0 +1,21 @@
+[workspace]
+resolver = "2"
+members = [
+    "cuest-ffi",
+]
+
+[workspace.package]
+edition = "2021"
+rust-version = "1.82"
+version = "0.1.0"
+description = "cuEST FFI bindings and wrappers"
+repository = "https://github.com/RESTGroup/cuest-rs"
+keywords = ["ffi", "chemistry", "cuda"]
+categories = ["science"]
+license = "Apache-2.0"
+
+[workspace.dependencies]
+# default-features = false: the loading mode (dynamic_loading) must be selected
+# exclusively through the `cuest-cudarc` crate's features. Otherwise cuest-ffi's
+# own defaults are always unified in and cannot be disabled by the safe crate.
+cuest-ffi = { path = "cuest-ffi", version = "0.1.0", default-features = false }

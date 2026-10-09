@@ -1,0 +1,28 @@
+[package]
+name = "cuest-ffi"
+description = "cuEST C binding FFI"
+readme = "readme.md"
+
+rust-version.workspace = true
+version.workspace = true
+edition.workspace = true
+repository.workspace = true
+keywords.workspace = true
+categories.workspace = true
+license.workspace = true
+
+# Native library identifier: allows `DEP_CUEST_*` metadata for downstream
+# build scripts and guarantees cuEST is linked by at most one crate.
+links = "cuEST"
+
+[dependencies]
+libloading = { version = "0.8", optional = true }
+
+[features]
+default = ["dynamic_loading"]
+
+# Dynamic library loading support (default). Disable for static linking.
+dynamic_loading = ["dep:libloading"]
+
+[package.metadata.docs.rs]
+features = ["dynamic_loading"]
