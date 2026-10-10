@@ -1,0 +1,35 @@
+name: stable build and CPU tests
+
+# cuEST has no CPU execution path, so only the pure-Rust tests run here: the
+# in-crate unit tests are named `cpu_*` and selected with a `cpu` filter. The
+# GPU/regression tests are named `gpu_*`, `#[ignore]`d, and run locally (see the
+# crate readmes).
+#
+# rust-toolchain.toml pins `nightly` for fmt/clippy; this job additionally
+# builds and tests with the stable toolchain so releases (published by
+# release-plz with stable) stay buildable. `+stable` is explicit because the
+# toolchain file would otherwise override the default.
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+concurrency:
+  group: test-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test-stable:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install stable toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy
+      - name: clippy (stable)
+        run: cargo +stable clippy --all-targets --all-features -- -D warnings
+      - name: CPU tests (stable)
+        run: cargo +stable test --workspace cpu

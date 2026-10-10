@@ -9,6 +9,13 @@ headers and shared library, is proprietary NVIDIA software and is not
 distributed with this crate; obtain it from NVIDIA. The raw bindings live in
 the `cuest-ffi` crate of this workspace.
 
+| Resources | Badges |
+|--|--|
+| Crate | [![Crate](https://img.shields.io/crates/v/cuest-cudarc.svg)](https://crates.io/crates/cuest-cudarc) |
+| API Document | [![API Documentation](https://docs.rs/cuest-cudarc/badge.svg)](https://docs.rs/cuest-cudarc) |
+| Repository | [![Repository](https://img.shields.io/badge/github-RESTGroup%2Fcuest--rs-blue.svg)](https://github.com/RESTGroup/cuest-rs) |
+| Bound library | [![cuEST v0.2.2](https://img.shields.io/badge/cuEST-v0.2.2-76b900.svg)](https://developer.nvidia.com/cuest) |
+
 ## Usage
 
 ```rust,no_run
@@ -89,13 +96,14 @@ point). cuEST documents no further thread-safety guarantees.
 
 ## Testing
 
-`cargo test` runs the pure-Rust unit tests (no GPU, no cuEST library needed).
-The end-to-end tests are `#[ignore]`d and need a GPU plus a local cuEST
-installation:
+Tests are split by name. The pure-Rust unit tests are `cpu_*` — no GPU and no
+cuEST library needed — and are what CI runs (`cargo test --workspace cpu`). The
+end-to-end tests are `gpu_*` and `#[ignore]`d; they need a GPU plus a local
+cuEST installation:
 
 ```bash
 CUEST_DYLOAD=/path/to/libcuest.so LD_LIBRARY_PATH=/usr/local/cuda/lib64 \
-    cargo test -p cuest-cudarc -- --ignored
+    cargo test -p cuest-cudarc gpu -- --ignored
 ```
 
 They compare `S`/`T`/`V` matrices for H2/STO-3G and H2O/def2-SVP against

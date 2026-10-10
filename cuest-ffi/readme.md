@@ -10,6 +10,17 @@ headers and shared library, is proprietary NVIDIA software and is not
 distributed with this crate; obtain it from NVIDIA. Users should prefer a safe
 wrapper crate (planned `cuest-cudarc`) over using this crate directly.
 
+| Resources | Badges |
+|--|--|
+| Crate | [![Crate](https://img.shields.io/crates/v/cuest-ffi.svg)](https://crates.io/crates/cuest-ffi) |
+| API Document | [![API Documentation](https://docs.rs/cuest-ffi/badge.svg)](https://docs.rs/cuest-ffi) |
+| Repository | [![Repository](https://img.shields.io/badge/github-RESTGroup%2Fcuest--rs-blue.svg)](https://github.com/RESTGroup/cuest-rs) |
+| Bound library | [![cuEST v0.2.2](https://img.shields.io/badge/cuEST-v0.2.2-76b900.svg)](https://developer.nvidia.com/cuest) |
+
+cuEST is available from NVIDIA; the
+[cuEST documentation](https://docs.nvidia.com/cuda/cuest/index.html) covers
+installation and the C API this crate binds.
+
 ## Loading modes
 
 - **Dynamic loading** (default, `dynamic_loading` feature): the cuEST shared
@@ -50,6 +61,18 @@ vendored in this repository; set `CUEST_INSTALL_DIR` to a local cuEST
 installation and run the script to regenerate. Never edit the generated files
 (`src/ffi_static.rs`, `src/ffi_dynamic/{ffi_base,dyload_compatible,dyload_initializer,dyload_struct}.rs`)
 manually; `src/ffi_dynamic/mod.rs` (runtime library search) is hand-written.
+
+## Testing
+
+`cargo test -p cuest-ffi cpu` runs the pure-Rust unit tests (`cpu_*` — status
+mapping and the version canary; no cuEST library needed). The dynamic-loading
+smoke test is `gpu_parameters_create_destroy` (`#[ignore]`d) and needs a local
+cuEST installation and CUDA libraries:
+
+```bash
+CUEST_DYLOAD=/path/to/libcuest.so LD_LIBRARY_PATH=/usr/local/cuda/lib64 \
+    cargo test -p cuest-ffi gpu -- --ignored
+```
 
 ## AI assistance
 

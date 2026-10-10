@@ -1,0 +1,13 @@
+# Crate versions are independent: `version_group` is intentionally not set, so
+# bumping one crate does not force a bump of the other.
+
+[workspace]
+git_release_enable = false
+git_tag_enable = false
+
+# Only the user-facing wrapper gets a GitHub release and a git tag; `cuest-ffi`
+# is still versioned and published, but untagged.
+[[package]]
+name = "cuest-cudarc"
+git_release_enable = true
+git_tag_enable = true

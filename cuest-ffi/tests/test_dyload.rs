@@ -14,7 +14,7 @@ use cuest_ffi::ffi::*;
 /// Create and destroy a handle parameters object; no GPU work is involved.
 #[test]
 #[ignore = "requires a local cuEST installation and CUDA libraries"]
-fn test_parameters_create_destroy() {
+fn gpu_parameters_create_destroy() {
     unsafe {
         let mut params: cuestHandleParameters_t = std::ptr::null_mut();
         let status = cuestParametersCreate(CUEST_HANDLE_PARAMETERS, &mut params);

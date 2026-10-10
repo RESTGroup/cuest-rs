@@ -4,7 +4,7 @@ description = "cuEST C binding FFI"
 readme = "readme.md"
 
 rust-version.workspace = true
-version.workspace = true
+version = "0.1.0"
 edition.workspace = true
 repository.workspace = true
 keywords.workspace = true

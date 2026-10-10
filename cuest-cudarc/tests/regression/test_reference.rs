@@ -158,7 +158,7 @@ fn run_case(case: &Value) -> (Vec<f64>, Vec<f64>, Vec<f64>) {
 
 #[test]
 #[ignore = "requires a GPU and a local cuEST installation"]
-fn test_reference_matrices() {
+fn gpu_reference_matrices() {
     let document = reference_document();
     let cases = document["cases"].as_array().expect("cases");
     assert!(!cases.is_empty());

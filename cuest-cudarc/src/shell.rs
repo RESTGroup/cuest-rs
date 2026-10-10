@@ -363,7 +363,7 @@ mod tests {
     }
 
     #[test]
-    fn test_normalize_coefficients() {
+    fn cpu_normalize_coefficients() {
         // H 1s STO-3G coefficients as published: relative to *normalized*
         // primitives, with the contraction ~unit-normalized (to the basis
         // file's precision).
@@ -393,7 +393,7 @@ mod tests {
     }
 
     #[test]
-    fn test_normalize_coefficients_errors() {
+    fn cpu_normalize_coefficients_errors() {
         let exps = [1.0];
         assert!(normalize_coefficients(0, &[], &[], 1.0).is_err());
         assert!(normalize_coefficients(0, &exps, &[1.0, 2.0], 1.0).is_err());
@@ -403,14 +403,14 @@ mod tests {
     }
 
     #[test]
-    fn test_check_primitive_lists() {
+    fn cpu_check_primitive_lists() {
         assert!(check_primitive_lists(3, 3).is_ok());
         assert!(check_primitive_lists(0, 0).is_err());
         assert!(check_primitive_lists(2, 3).is_err());
     }
 
     #[test]
-    fn test_shell_spec() {
+    fn cpu_shell_spec() {
         let spec = CuestShellSpec::new(0, true, vec![1.0, 2.0], vec![0.5, 0.5]).unwrap();
         assert_eq!(spec.num_primitive(), 2);
         let normalized = spec.normalized(1.0).unwrap();

@@ -1,0 +1,35 @@
+name: code style and linting checks
+
+# cuEST has no CPU execution path, so CI is limited to formatting and linting;
+# the GPU/regression tests are `#[ignore]`d and run locally. All commands here
+# build under the default `dynamic_loading` feature, which needs no cuEST or
+# CUDA installation at compile time.
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+concurrency:
+  group: clippy-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  rustfmt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install rustfmt
+        run: rustup component add rustfmt
+      - name: rustfmt
+        run: cargo fmt --all -- --check
+
+  clippy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install clippy
+        run: rustup component add clippy
+      - name: clippy
+        run: cargo clippy --all-targets --all-features -- -D warnings

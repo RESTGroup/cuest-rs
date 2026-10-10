@@ -4,7 +4,7 @@ description = "Safe Rust wrapper for cuEST built on cudarc"
 readme = "readme.md"
 
 rust-version.workspace = true
-version.workspace = true
+version = "0.1.0"
 edition.workspace = true
 repository.workspace = true
 keywords.workspace = true

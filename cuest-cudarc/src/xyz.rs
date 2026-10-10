@@ -178,7 +178,7 @@ H 0.000000 -0.757000 0.587000
 ";
 
     #[test]
-    fn test_parse() {
+    fn cpu_parse() {
         let xyz = Xyz::parse(H2O).unwrap();
         assert_eq!(xyz.len(), 3);
         assert_eq!(xyz.symbols(), ["O", "H", "H"]);
@@ -189,7 +189,7 @@ H 0.000000 -0.757000 0.587000
     }
 
     #[test]
-    fn test_bohr_conversion() {
+    fn cpu_bohr_conversion() {
         let xyz = Xyz::parse(H2O).unwrap();
         let bohr = xyz.coords_bohr_flat();
         assert_eq!(bohr.len(), 9);
@@ -198,7 +198,7 @@ H 0.000000 -0.757000 0.587000
     }
 
     #[test]
-    fn test_parse_tolerance_and_errors() {
+    fn cpu_parse_tolerance_and_errors() {
         // Lower case symbols, extra columns, comments.
         let xyz = Xyz::parse("1\ncomment\nh 1.0 2.0 3.0 extra\n").unwrap();
         assert_eq!(xyz.symbols(), ["H"]);
@@ -215,7 +215,7 @@ H 0.000000 -0.757000 0.587000
     }
 
     #[test]
-    fn test_atomic_number() {
+    fn cpu_atomic_number() {
         assert_eq!(atomic_number("H").unwrap(), 1);
         assert_eq!(atomic_number("og").unwrap(), 118);
         assert_eq!(atomic_number("X").unwrap(), 0);

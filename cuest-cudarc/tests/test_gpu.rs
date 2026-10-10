@@ -52,7 +52,7 @@ fn to_host(stream: &Arc<CudaStream>, slice: &CudaSlice<f64>) -> Vec<f64> {
 
 #[test]
 #[ignore = "requires a GPU and a local cuEST installation"]
-fn test_handle_settings_and_queries() {
+fn gpu_handle_settings_and_queries() {
     let (context, _stream) = context_and_stream();
 
     // Runtime version matches the bindings (context creation would have
@@ -117,7 +117,7 @@ fn test_handle_settings_and_queries() {
 
 #[test]
 #[ignore = "requires a GPU and a local cuEST installation"]
-fn test_validation_and_into_variants() {
+fn gpu_validation_and_into_variants() {
     let (context, stream) = context_and_stream();
     let xyz = Xyz::parse(H2_XYZ).expect("parse xyz");
     let shell0 = h_shell(&context);

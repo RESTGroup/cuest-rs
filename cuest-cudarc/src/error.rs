@@ -85,7 +85,7 @@ mod tests {
     use cuest_ffi::ffi::{CUEST_STATUS_INVALID_ARGUMENT, CUEST_STATUS_SUCCESS};
 
     #[test]
-    fn test_status_check() {
+    fn cpu_status_check() {
         assert!(status_check(CUEST_STATUS_SUCCESS, "f").is_ok());
         let err = status_check(CUEST_STATUS_INVALID_ARGUMENT, "cuestF").unwrap_err();
         match err {
@@ -98,7 +98,7 @@ mod tests {
     }
 
     #[test]
-    fn test_display() {
+    fn cpu_display() {
         let err = CuestError::Status {
             status: CUEST_STATUS_INVALID_ARGUMENT,
             context: "cuestAOBasisCreate",

@@ -438,7 +438,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_check_output_len() {
+    fn cpu_check_output_len() {
         assert!(check_output_len(3, 9).is_ok());
         assert!(check_output_len(3, 10).is_ok());
         assert!(check_output_len(3, 8).is_err());

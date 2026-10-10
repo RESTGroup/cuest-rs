@@ -32,14 +32,14 @@ mod tests {
     use crate::ffi::*;
 
     #[test]
-    fn test_status_to_str() {
+    fn cpu_status_to_str() {
         assert_eq!(status_to_str(CUEST_STATUS_SUCCESS), "success");
         assert_eq!(status_to_str(CUEST_STATUS_HOME_NOT_FOUND), "home directory not found");
         assert_eq!(status_to_str(CuestStatus(1234)), "unrecognized status code");
     }
 
     #[test]
-    fn test_version_macros() {
+    fn cpu_version_macros() {
         let version = CUEST_VER_MAJOR * 10000 + CUEST_VER_MINOR * 100 + CUEST_VER_PATCH;
         assert_eq!(CUEST_VERSION, version);
         // Binding canary: update together with a cuEST version bump (see

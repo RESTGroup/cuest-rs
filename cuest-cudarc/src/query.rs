@@ -177,7 +177,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_attribute_ids_match_c() {
+    fn cpu_attribute_ids_match_c() {
         assert_eq!(<AoshellIsPure as CuestAttribute>::ID, 0);
         assert_eq!(<AoshellNumCart as CuestAttribute>::ID, 5);
         assert_eq!(<AobasisIsPure as CuestAttribute>::ID, 0);
@@ -185,14 +185,14 @@ mod tests {
     }
 
     #[test]
-    fn test_value_sizes() {
+    fn cpu_value_sizes() {
         assert_eq!(<u64 as AttributeValue>::SIZE, 8);
         assert_eq!(<i32 as AttributeValue>::SIZE, 4);
         assert_eq!(<f64 as AttributeValue>::SIZE, 8);
     }
 
     #[test]
-    fn test_from_bytes() {
+    fn cpu_from_bytes() {
         assert_eq!(u64::from_bytes(&7u64.to_ne_bytes()), 7);
         assert_eq!(i32::from_bytes(&(-3i32).to_ne_bytes()), -3);
         assert_eq!(f64::from_bytes(&1.5f64.to_ne_bytes()), 1.5);

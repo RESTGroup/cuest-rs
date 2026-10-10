@@ -8,7 +8,8 @@ members = [
 [workspace.package]
 edition = "2021"
 rust-version = "1.82"
-version = "0.1.0"
+# No workspace `version`: the crates are versioned independently (see
+# release-plz.toml; release-plz must be able to bump one without the other).
 description = "cuEST FFI bindings and wrappers"
 repository = "https://github.com/RESTGroup/cuest-rs"
 keywords = ["ffi", "chemistry", "cuda"]
