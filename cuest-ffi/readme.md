@@ -51,6 +51,11 @@ installation and run the script to regenerate. Never edit the generated files
 (`src/ffi_static.rs`, `src/ffi_dynamic/{ffi_base,dyload_compatible,dyload_initializer,dyload_struct}.rs`)
 manually; `src/ffi_dynamic/mod.rs` (runtime library search) is hand-written.
 
+## AI assistance
+
+This project is developed with the help of AI assistance (mainly using Claude
+Code with customized LLM models). See CLAUDE.md and git history for details.
+
 ## License
 
 Apache-2.0. This project is not affiliated with NVIDIA Corporation. It

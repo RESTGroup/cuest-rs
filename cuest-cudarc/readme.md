@@ -104,6 +104,11 @@ pyscf reference values in `tests/regression/reference.toml` (regenerate with
 `target/cuest-jit-cache` (cuEST otherwise requires `HOME`); in restricted
 environments pass `CuestHandleOptions::jit_cache_dir` explicitly.
 
+## AI assistance
+
+This project is developed with the help of AI assistance (mainly using Claude
+Code with customized LLM models). See CLAUDE.md and git history for details.
+
 ## License
 
 Apache-2.0. This project is not affiliated with NVIDIA Corporation; the cuEST

@@ -28,6 +28,11 @@ integrals (overlap, kinetic, potential). See `cuest-cudarc/readme.md`.
 
 [cudarc]: https://docs.rs/cudarc
 
+## AI assistance
+
+This project is developed with the help of AI assistance (mainly using Claude
+Code with customized LLM models). See CLAUDE.md and git history for details.
+
 ## License
 
 Apache-2.0 for this project. cuEST itself, including its headers and library,
